@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "../typescript-language-service-plugin",
+        "remove": ["caller", "callee"]
+      }
+    ]
+  }
+}

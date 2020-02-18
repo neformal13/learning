@@ -41,6 +41,7 @@ init =
 type Msg
     = Increment
     | Decrement
+    | Reset
 
 
 update : Msg -> Model -> Model
@@ -55,6 +56,9 @@ update msg model =
         Decrement ->
             { model | counter = model.counter - 1, clicks = model.clicks + 1 }
 
+        Reset ->
+            { model | counter = 0, clicks = 0 }
+
 
 
 -- VIEW
@@ -63,8 +67,12 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text ("Counter - " ++ String.fromInt model.counter) ]
-        , div [] [ text ("Clicks - " ++ String.fromInt model.clicks) ]
-        , button [ onClick Increment ] [ text "+" ]
+        [ div []
+            [ button [ onClick Decrement ] [ text "-" ]
+            , div [] [ text ("Counter - " ++ String.fromInt model.counter) ]
+            , div [] [ text ("Clicks - " ++ String.fromInt model.clicks) ]
+            , button [ onClick Increment ] [ text "+" ]
+            ]
+        , div []
+            [ button [ onClick Reset ] [ text "Reset"] ]
         ]
