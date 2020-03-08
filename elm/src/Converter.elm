@@ -12,7 +12,7 @@ type TemperatureMeasurement
 
 
 type alias Temperature =
-    ( TemperatureMeasurement, Float )
+    ( TemperatureMeasurement, Maybe Float )
 
 
 
@@ -28,15 +28,14 @@ main =
 
 
 type alias Model =
-    { temperature : Maybe Temperature
-    , inputType : TemperatureMeasurement
+    { temperature : Temperature
     , input : String
     }
 
 
 init : Model
 init =
-    Model Nothing Celsius ""
+    Model ( Celsius, Nothing ) ""
 
 
 
@@ -54,40 +53,21 @@ update msg model =
         Change newInput ->
             { model
                 | input = newInput
-                , temperature =
-                    case String.toFloat newInput of
-                        Just temperatureValue ->
-                            Just ( model.inputType, temperatureValue )
-
-                        Nothing ->
-                            Nothing
+                , temperature = ( Tuple.first model.temperature, String.toFloat newInput )
             }
 
         ChangeMeasurement ->
-            switchMeasurementType model
+            { model
+                | temperature =
+                    ( case Tuple.first model.temperature of
+                        Celsius ->
+                            Fahrenheit
 
-
-switchMeasurementType : Model -> Model
-switchMeasurementType model =
-    { model
-        | inputType =
-            case model.inputType of
-                Celsius ->
-                    Fahrenheit
-
-                Fahrenheit ->
-                    Celsius
-        , temperature =
-            case model.temperature of
-                Just ( Celsius, value ) ->
-                    Just ( Fahrenheit, value )
-
-                Just ( Fahrenheit, value ) ->
-                    Just ( Celsius, value )
-
-                Nothing ->
-                    Nothing
-    }
+                        Fahrenheit ->
+                            Celsius
+                    , Tuple.second model.temperature
+                    )
+            }
 
 
 
@@ -128,30 +108,30 @@ view : Model -> Html Msg
 view model =
     case String.toFloat model.input of
         Just celsius ->
-            viewConverter model.input model.inputType model.temperature "blue" (String.fromFloat (fromCelsiusToFahrenheit celsius))
+            viewConverter model.input model.temperature "blue" (String.fromFloat (fromCelsiusToFahrenheit celsius))
 
         Nothing ->
-            viewConverter model.input model.inputType model.temperature "red" "???"
+            viewConverter model.input model.temperature "red" "???"
 
 
-viewConverter : String -> TemperatureMeasurement -> Maybe Temperature -> String -> String -> Html Msg
-viewConverter userInput inputType temperature color equivalentTemp =
+viewConverter : String -> Temperature -> String -> String -> Html Msg
+viewConverter userInput temperature color equivalentTemp =
     span []
         [ input [ value userInput, onInput Change, style "width" "40px" ] []
-        , text (getTemperatureSign inputType)
+        , text (getTemperatureSign (Tuple.first temperature))
         , button [ onClick ChangeMeasurement ] [ text "=" ]
         , span [ style "color" color ]
             [ text
                 (case temperature of
-                    Just ( Celsius, value ) ->
+                    ( _, Nothing ) ->
+                        "???"
+
+                    ( Celsius, Just value ) ->
                         String.fromFloat (fromCelsiusToFahrenheit value)
 
-                    Just ( Fahrenheit, value ) ->
+                    ( Fahrenheit, Just value ) ->
                         String.fromFloat (fromFahrenheitToCelsius value)
-
-                    Nothing ->
-                        "???"
                 )
             ]
-        , text (getTemperatureSign (getOppositeTemperatureMeasurement inputType))
+        , text (getTemperatureSign (getOppositeTemperatureMeasurement (Tuple.first temperature)))
         ]
