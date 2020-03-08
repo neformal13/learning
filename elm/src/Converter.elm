@@ -106,32 +106,52 @@ getOppositeTemperatureMeasurement temperatureType =
 
 view : Model -> Html Msg
 view model =
-    case String.toFloat model.input of
-        Just celsius ->
-            viewConverter model.input model.temperature "blue" (String.fromFloat (fromCelsiusToFahrenheit celsius))
-
-        Nothing ->
-            viewConverter model.input model.temperature "red" "???"
+    viewConverter model.input model.temperature
 
 
-viewConverter : String -> Temperature -> String -> String -> Html Msg
-viewConverter userInput temperature color equivalentTemp =
+viewConverter : String -> Temperature -> Html Msg
+viewConverter userInput ( temperatureType, temperatureValue ) =
     span []
-        [ input [ value userInput, onInput Change, style "width" "40px" ] []
-        , text (getTemperatureSign (Tuple.first temperature))
-        , button [ onClick ChangeMeasurement ] [ text "=" ]
-        , span [ style "color" color ]
-            [ text
-                (case temperature of
-                    ( _, Nothing ) ->
-                        "???"
+        [ input
+            [ autofocus True
+            , value userInput
+            , onInput Change
+            , style "width" "40px"
+            , style "border-color"
+                (case temperatureValue of
+                    Nothing ->
+                        "red"
 
-                    ( Celsius, Just value ) ->
-                        String.fromFloat (fromCelsiusToFahrenheit value)
-
-                    ( Fahrenheit, Just value ) ->
-                        String.fromFloat (fromFahrenheitToCelsius value)
+                    Just _ ->
+                        "blue"
                 )
             ]
-        , text (getTemperatureSign (getOppositeTemperatureMeasurement (Tuple.first temperature)))
+            []
+        , text (getTemperatureSign temperatureType)
+        , button [ onClick ChangeMeasurement ] [ text "=" ]
+        , span
+            [ style "color"
+                (case temperatureValue of
+                    Nothing ->
+                        "red"
+
+                    Just _ ->
+                        "blue"
+                )
+            ]
+            [ text
+                (case temperatureValue of
+                    Nothing ->
+                        "???"
+
+                    Just value ->
+                        case temperatureType of
+                            Celsius ->
+                                String.fromFloat (fromCelsiusToFahrenheit value)
+
+                            Fahrenheit ->
+                                String.fromFloat (fromFahrenheitToCelsius value)
+                )
+            ]
+        , text (getTemperatureSign (getOppositeTemperatureMeasurement temperatureType))
         ]
