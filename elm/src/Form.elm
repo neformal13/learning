@@ -74,8 +74,25 @@ viewInput t p v toMsg =
 
 viewValidation : Model -> Html msg
 viewValidation model =
-    if model.password == model.passwordAgain then
-        div [ style "color" "green" ] [ text "OK" ]
+    ul []
+        [ if not (String.any Char.isLower model.password) then
+            li [ style "color" "red" ] [ text "Password should contain at least one lower case symbol!" ]
 
-    else
-        div [ style "color" "red" ] [ text "Password do not match!" ]
+          else
+            li [ style "color" "green" ] [ text "Password should contain at least one lower case symbol!" ]
+        , if not (String.any Char.isUpper model.password) then
+            li [ style "color" "red" ] [ text "Password should contain at least one upper case symbol!" ]
+
+          else
+            li [ style "color" "green" ] [ text "Password should contain at least one upper case symbol!" ]
+        , if String.length model.password < 8 then
+            li [ style "color" "red" ] [ text "Password should be longer than 8 symbols!" ]
+
+          else
+            li [ style "color" "green" ] [ text "Password contain more than 8 symbols!" ]
+        , if model.password /= model.passwordAgain then
+            li [ style "color" "red" ] [ text "Password do not match!" ]
+
+          else
+            li [ style "color" "green" ] [ text "Password match!" ]
+        ]
