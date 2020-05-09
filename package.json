@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "workspaces": [
+    "egghead-io/thinking-reactively-with-rxjs",
+    "typescript-examples",
+    "typescript-language-service-plugin"
+  ]
+}
