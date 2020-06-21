@@ -1,0 +1,33 @@
+[13:56:10.959] Global cache location '/Users/mykhailoivankiv/Library/Caches/typescript/3.8', safe file path '/applications/visual studio code.app/contents/resources/app/extensions/node_modules/typescript/lib/typingsafelist.json', types map path /applications/visual studio code.app/contents/resources/app/extensions/node_modules/typescript/lib/typesmap.json
+[13:56:10.961] Processing cache location '/Users/mykhailoivankiv/Library/Caches/typescript/3.8'
+[13:56:10.961] Trying to find '/Users/mykhailoivankiv/Library/Caches/typescript/3.8/package.json'...
+[13:56:10.964] Loaded content of '/Users/mykhailoivankiv/Library/Caches/typescript/3.8/package.json': {"private":true,"dependencies":{"types-registry":"^0.1.485"},"devDependencies":{"@types/d3":"^5.7.2"}}
+[13:56:10.965] Loaded content of '/Users/mykhailoivankiv/Library/Caches/typescript/3.8/package-lock.json'
+[13:56:10.985] Adding entry into typings cache: 'd3' => '/Users/mykhailoivankiv/Library/Caches/typescript/3.8/node_modules/@types/d3/index.d.ts'
+[13:56:10.985] Finished processing cache location '/Users/mykhailoivankiv/Library/Caches/typescript/3.8'
+[13:56:10.986] Process id: 6230
+[13:56:10.986] NPM location: npm (explicit '--npmLocation' not  provided)
+[13:56:10.986] validateDefaultNpmLocation: true
+[13:56:10.986] Npm config file: /Users/mykhailoivankiv/Library/Caches/typescript/3.8/package.json
+[13:56:10.987] Updating types-registry npm package...
+[13:56:10.987] Exec: npm install --ignore-scripts types-registry@latest
+[13:56:14.447]     Succeeded. stdout:
+    + types-registry@0.1.495
+    updated 1 package and audited 34 packages in 1.124s
+found 0 vulnerabilities
+
+
+[13:56:14.447] Updated types-registry npm package
+[13:56:14.461] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es5.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2016.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.dom.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.dom.iterable.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.scripthost.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.core.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.collection.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.generator.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.iterable.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.promise.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.proxy.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.reflect.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.symbol.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2016.array.include.d.ts","/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/lib.es2016.full.d.ts","/Users/mykhailoivankiv/Projects/beautiful-visualization/src/index.js"],"compilerOptions":{"module":1,"target":3,"jsx":1,"sourceMap":true,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"resolveJsonModule":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"/Users/mykhailoivankiv/Projects/beautiful-visualization/src","kind":"discover"}
+[13:56:14.477] Loaded safelist from types map file '/applications/visual studio code.app/contents/resources/app/extensions/node_modules/typescript/lib/typesmap.json'
+[13:56:14.478] Explicitly included types: []
+[13:56:14.479] Inferred typings from unresolved imports: []
+[13:56:14.479] Result: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/Users/mykhailoivankiv/Projects/beautiful-visualization/src/bower_components","/Users/mykhailoivankiv/Projects/beautiful-visualization/src/node_modules"]}
+[13:56:14.479] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/Users/mykhailoivankiv/Projects/beautiful-visualization/src/bower_components","/Users/mykhailoivankiv/Projects/beautiful-visualization/src/node_modules"]}
+[13:56:14.480] DirectoryWatcher:: Added:: WatchInfo: /Users/mykhailoivankiv/Projects/beautiful-visualization/src/bower_components
+[13:56:14.483] DirectoryWatcher:: Added:: WatchInfo: /Users/mykhailoivankiv/Projects/beautiful-visualization/src/node_modules
+[13:56:14.483] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"module":1,"target":3,"jsx":1,"sourceMap":true,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"resolveJsonModule":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[13:56:14.484] Response has been sent.
+[13:56:14.484] No new typings were requested as a result of typings discovery
+[13:59:4.568] Parent process has exited, shutting down...
